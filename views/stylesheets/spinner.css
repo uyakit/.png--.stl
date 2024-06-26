@@ -1,0 +1,73 @@
+/* https://digipress.info/tech/css-spinner-animation-demo/  */
+
+.box{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: 9999;
+	-webkit-transition: all 1.2s ease; /* 1.2秒でフェードアウト */
+	        transition: all 1.2s ease;
+	background-color: rgba(181, 162, 150, 0.2); /* 背景カラー */
+	}
+
+.spinner {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	transform-origin: center;
+	width: 240px;
+	height: 240px;
+}
+.spinner span {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 24px;
+}
+.spinner.crcl {
+	border-radius: 50%;
+	border-width: 24px;
+	border-style: solid;
+	border-color: rgba(10, 252, 82, 0.32) rgba(10, 252, 82, 0.08) rgba(10, 252, 82, 0.24);
+	-webkit-animation: spinner_crcl 1.5s infinite linear forwards;
+	animation: spinner_crcl 1.5s infinite linear forwards;
+}
+.spinner.crcl span {
+	animation: spinner_loading_text 1.5s infinite linear forwards reverse;
+}
+
+@-webkit-keyframes spinner_crcl {
+	0% {
+		transform: translate(-50%, -50%) rotate(0);
+	}
+	100% {
+		transform: translate(-50%, -50%) rotate(360deg);
+	}
+}
+
+@keyframes spinner_crcl {
+	0% {
+		transform: translate(-50%, -50%) rotate(0);
+	}
+	100% {
+		transform: translate(-50%, -50%) rotate(360deg);
+	}
+}
+@keyframes spinner_loading_text {
+	0% {
+		opacity: 1;
+		transform: translate(-50%, -50%) rotate(0deg);
+	}
+	50% {
+		opacity: 0;
+		transform: translate(-50%, -50%) rotate(180deg);
+	}
+	100% {
+		opacity: 1;
+		transform: translate(-50%, -50%) rotate(360deg);
+	}
+}

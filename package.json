@@ -1,0 +1,17 @@
+{
+  "name": "png2stl",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "uya",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "log4js": "^6.9.1",
+    "multer": "^1.4.5-lts.1"
+  }
+}

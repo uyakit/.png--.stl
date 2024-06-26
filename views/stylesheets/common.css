@@ -1,0 +1,121 @@
+:root {
+  --color-range-background: #e6e6fa;
+  --color-range-border: #483d8b;
+  --color-range-thumb-background: rgba(72, 61, 139, .95);
+  --color-range-thumb-box-shadow:  none;
+  /* Colors : https://www.colordic.org/ */
+}
+/* ------------------------------------------------------------------- */
+html, body {
+  height: 100%;
+  min-width:400px;
+  overflow-x: hidden;  /* 横スクロールのみ無効 */
+}
+.outerframe main {
+  display: flex;
+  position: relative;
+  padding-top: 3rem;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.outerframe {
+  min-height: 100%;
+  position: relative;
+}
+
+.outerframe > .container {
+  padding-bottom: 10rem;
+}
+
+.outerframe > footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 8rem;
+}
+/* ------------------------------------------------------------------- */
+/* https://web-den.com/hamburger-menu-js */
+
+.nav-list {
+  list-style: none; /* リストスタイル無し */
+  display: flex; /* 水平表示 */
+  margin: 0; /* 外部余白なし */
+}
+
+.nav-list li {
+  padding: 0 0px; /* 各アイテムの内部余白 */
+}
+
+.nav-list a {
+  text-decoration: none; /* アンダーラインなし */
+  color: rgba(245, 245, 245, .95); /* リンク色 */
+}
+
+.nav-list a:hover {
+  text-decoration: none; /* アンダーラインなし */
+  color: rgba(97, 250, 240, .95); /* リンク色 */
+}
+
+/* モバイルメニュー用スタイル */
+.menu-toggle {
+  display: none; /* デフォルトでは非表示 */
+  flex-direction: column; /* 垂直方向のスタック */
+  cursor: pointer; /* カーソルをポインタに設定 */
+}
+
+.menu-toggle .bar {
+  height: 3.5px; /* 棒の高さ */
+  width: 25px; /* 棒の幅 */
+  margin: 3px 0; /* 棒の間隔 */
+  background-color: rgba(245, 245, 245, .95); /* 棒の色 */
+  transition: 0.3s; /* アニメーションの速さ */
+}
+
+/* メディアクエリでモバイル対応 */
+@media (max-width: 5000px) {
+  .nav-list {
+    position: absolute; /* 絶対位置 */
+    right: -100%; /* 初期位置は右外 */
+    top: 70px; /* 上部からの距離 */
+    flex-direction: column; /* 垂直方向のスタック */
+    background-color: rgba(53, 58, 64, .95); /* 背景色 */
+    width: 200px; /* 幅 */
+    height: 200%; /* 高さ */
+    justify-content: flex-start; /* 開始点から配置 */
+    padding-top: 20px; /* 上部の内部余白 */
+    transition: 0.3s; /* 位置変更のアニメーション時間 */
+  }
+
+  .nav-list li {
+    padding: 0px; /* リストアイテムの余白 */
+  }
+
+  .menu-toggle {
+    display: flex; /* モバイルでは表示 */
+  }
+
+  .nav-active {
+    right: 0; /* アクティブ時は右端に */
+  }
+
+  .toggle .bar:nth-child(1),
+  .toggle .bar:nth-child(3) {
+    transform: translateX(-5px); /* X記号のための変形 */
+  }
+
+  .toggle .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-6px, 7px);
+  }
+
+  .toggle .bar:nth-child(2) {
+    opacity: 0; /* 中央の棒を透明に */
+  }
+
+  .toggle .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -7px);
+  }
+}
+/* ------------------------------------------------------------------- */
