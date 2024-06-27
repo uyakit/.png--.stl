@@ -45,7 +45,7 @@ DefineConstant[
   
   sizeMin = {
     Mesh.CharacteristicLengthMin, AutoCheck 0,
-    GmshOption "Mesh.CharacteristicLengthMin", Min w/200, Max w, Step 0.05,
+    GmshOption "Mesh.CharacteristicLengthMin", Min 4, Max (w * h)^(1/2), Step 1,
     Name "Meshing parameters/Minimum element size"
   },
   
@@ -59,7 +59,8 @@ DefineConstant[
 Mesh.ColorCarousel = 0;
 Mesh.Color.Triangles = Black;
 Mesh.Color.Quadrangles = Black;
-Mesh.RecombineAll = (algo == 1);
+Mesh.RecombineAll = (algo == 8);
+//Mesh.Algorithm = 6; // Frontal-Delaunay for 2D meshes
 Solver.AutoMesh = 2;
 Mesh 2;
 Save "png2stl.msh";
