@@ -68,7 +68,7 @@
 						</div>
 						<br>
 						<div style="text-align:right;">
-							<a href="./public/KarmanVortexSt..png" download="KarmanVortexSt..png" target="_blank" style="color:rgba(21, 153, 191, 0.8);"># <u>Sample .png to test</u>&nbsp;[460 KB]</a>
+							<a href="./public/Synchronised_Swimming_of_Two_Fish@2016.png" download="Synchronised_Swimming_of_Two_Fish@2016.png" target="_blank" style="color:rgba(21, 153, 191, 0.8)"># <u>Sample .png to test</u>&nbsp;[298 KB]</a>
 						</div>
 						<div id="upFileWrap">
 							<div id="upFileWrap_noPrev">
@@ -174,7 +174,7 @@
 				setFile: function(file){
 					let ext = file.name.split(".").pop();
 					if(ext == 'png') {
-						if(file.size < (20 * Math.pow(1024, 2))) {
+						if(file.size < (500 * Math.pow(1024, 1))) {
 							let _upFileWrap = document.getElementById('upFileWrap');
 							_upFileWrap.className = 'selected';
 							
@@ -182,7 +182,7 @@
 							
 							document.getElementById("btnSubmit").disabled = false;
 						} else {
-							alert(".png available just under '20MB' !");
+							alert(".png available just under '500KB' !");
 						}
 					} else {
 						alert('Just .png available !');
