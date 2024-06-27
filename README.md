@@ -13,7 +13,9 @@ Mesh a <font color="MediumSeaGreen"> .png</font> picture into flat <font color="
 ### Requirements
 
 <p style="text-indent:2em; font-size: 115%;">
-Google Chrome on a <font color="MediumSeaGreen">Desktop PC</font> with 'Desktop site' mode preferred.
+
+- A <font color="MediumSeaGreen">White background</font> picture expected to be loaded; The result mesh go finer as colors go deeper.
+- Google Chrome on a <font color="MediumSeaGreen">Desktop PC</font> with 'Desktop site' mode preferred.
 </p>
 
 ### Installation
