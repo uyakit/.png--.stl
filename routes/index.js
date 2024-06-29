@@ -39,7 +39,25 @@ function exec_png2stl(fname)
 	// ------------------------------------------------------
 }
 //==================================================================
-function clearPngMshStl(dir)
+function clearPngMshStl_init(dir)
+{
+	const arrDirFiles = fs.readdirSync(dir, { withFileTypes: true });
+	const arrFiles = arrDirFiles.filter(dirent => dirent.isFile()).map(({ name }) => name);
+	
+	arrFiles.forEach(fname => {
+		if (path.basename(fname) == 'png2stl_Cntr.png' || path.basename(fname) == 'png2stl_Mesh.png' || path.parse(fname).ext == ".msh" || path.parse(fname).ext == ".stl") {
+			fs.unlink((dir + fname), (error) => {
+				if (error != null) {
+					console.log(error);
+				} else {
+					console.log((dir + fname) + " : deleted");
+				}
+			});
+		}
+	});
+}
+//==================================================================
+function clearPngMshStl_all(dir)
 {
 	const arrDirFiles = fs.readdirSync(dir, { withFileTypes: true });
 	const arrFiles = arrDirFiles.filter(dirent => dirent.isFile()).map(({ name }) => name);
@@ -61,11 +79,12 @@ function clearPngMshStl(dir)
 
 // --------------------------------------
 router.get("/", (req, res) => {
-	clearPngMshStl("./app/gmsh/");
+	clearPngMshStl_all("./app/gmsh/");
 	res.render("./index.ejs");
 });
 // --------------------------------------
 router.post("/", upload.any(), (req, res) => {
+	clearPngMshStl_init("./app/gmsh/");
 	
 	// sout
 	console.log('# originalname : ' + req.files[0].originalname);
