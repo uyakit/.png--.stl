@@ -1,33 +1,9 @@
-[2024-06-29T10:43:36.199] [INFO] application - Application listening at :3000
-[2024-06-29T12:04:06.815] [ERROR] application - Cannot read properties of undefined (reading 'originalname')
-[2024-06-29T15:19:52.632] [INFO] application - Application listening at :3000
-[2024-06-29T15:20:07.735] [ERROR] application - Command failed: py  ./app/gmsh/png2stl.py  "./証明写真_20240610@背景白.png"
-Traceback (most recent call last):
-  File "C:\Users\uyasp\Desktop\Node.js\Express.js\png2stl.js\app\gmsh\png2stl.py", line 21, in <module>
-    shutil.copy(basename_png + '.png', basename_me + '.png')
-  File "C:\Users\uyasp\AppData\Local\Programs\Python\Python311\Lib\shutil.py", line 431, in copy
-    copyfile(src, dst, follow_symlinks=follow_symlinks)
-  File "C:\Users\uyasp\AppData\Local\Programs\Python\Python311\Lib\shutil.py", line 256, in copyfile
-    with open(src, 'rb') as fsrc:
-         ^^^^^^^^^^^^^^^
-PermissionError: [Errno 13] Permission denied: '�ؖ��ʐ^_20240610@�w�i��.png'
-
-[2024-06-29T15:31:06.622] [INFO] application - Application listening at :3000
-[2024-06-29T15:31:12.828] [ERROR] application - Command failed: py  ./app/gmsh/png2stl.py  "./証明写真_20240610@背景白.png"
-C:\Users\uyasp\AppData\Local\Programs\Python\Python311\python.exe: can't open file 'C:\\Users\\uyasp\\Desktop\\Node.js\\Express.js\\png2stl.js\\app\\gmsh\\png2stl.py': [Errno 2] No such file or directory
-
-[2024-06-29T15:31:34.424] [ERROR] application - Command failed: py  ./app/gmsh/png2stl.py  "./Lenna-WB.png"
-C:\Users\uyasp\AppData\Local\Programs\Python\Python311\python.exe: can't open file 'C:\\Users\\uyasp\\Desktop\\Node.js\\Express.js\\png2stl.js\\app\\gmsh\\png2stl.py': [Errno 2] No such file or directory
-
-[2024-06-29T15:33:18.002] [ERROR] application - Command failed: py  ./app/gmsh/png2stl.py  "./Lenna-WB.png"
-C:\Users\uyasp\AppData\Local\Programs\Python\Python311\python.exe: can't open file 'C:\\Users\\uyasp\\Desktop\\Node.js\\Express.js\\png2stl.js\\app\\gmsh\\png2stl.py': [Errno 2] No such file or directory
-
-[2024-06-29T15:34:31.260] [INFO] application - Application listening at :3000
-[2024-06-29T15:34:45.252] [ERROR] application - Command failed: py  ./app/gmsh/png2stl.py  "./Lenna-WB.png"
-C:\Users\uyasp\AppData\Local\Programs\Python\Python311\python.exe: can't open file 'C:\\Users\\uyasp\\Desktop\\Node.js\\Express.js\\png2stl.js\\app\\gmsh\\png2stl.py': [Errno 2] No such file or directory
-
-[2024-06-29T15:35:42.994] [INFO] application - Application listening at :3000
-[2024-06-29T16:05:56.049] [INFO] application - Application listening at :3000
-[2024-06-29T16:11:46.939] [INFO] application - Application listening at :3000
-[2024-06-29T16:50:42.199] [INFO] application - Application listening at :3000
-[2024-06-29T16:54:18.293] [INFO] application - Application listening at :3000
+[2024-06-30T14:40:18.362] [INFO] application - Application listening at :3000
+[2024-06-30T14:40:21.377] [ERROR] application - ENOENT: no such file or directory, copyfile 'C:\Users\uyasp\Desktop\Node.js\Express.js\png2stl.js\blockSpinner.png' -> 'C:\Users\uyasp\Desktop\Node.js\Express.js\png2stl.js\app\PyVista\blockSpinner.png'
+[2024-06-30T14:40:22.029] [ERROR] application - ENOENT: no such file or directory, copyfile 'C:\Users\uyasp\Desktop\Node.js\Express.js\png2stl.js\blockSpinner.png' -> 'C:\Users\uyasp\Desktop\Node.js\Express.js\png2stl.js\app\PyVista\blockSpinner.png'
+[2024-06-30T14:41:56.211] [ERROR] application - ENOENT: no such file or directory, copyfile 'C:\Users\uyasp\Desktop\Node.js\Express.js\png2stl.js\blockSpinner.png' -> 'C:\Users\uyasp\Desktop\Node.js\Express.js\png2stl.js\app\PyVista\blockSpinner.png'
+[2024-06-30T14:42:00.880] [INFO] application - Application listening at :3000
+[2024-06-30T14:47:33.791] [ERROR] application - EBUSY: resource busy or locked, copyfile 'C:\Users\uyasp\Desktop\Node.js\Express.js\png2stl.js\blockSpinner.png' -> 'C:\Users\uyasp\Desktop\Node.js\Express.js\png2stl.js\app\gmsh\blockSpinner.png'
+[2024-06-30T14:48:42.546] [INFO] application - Application listening at :3000
+[2024-06-30T14:54:36.580] [INFO] application - Application listening at :3000
+[2024-06-30T15:06:33.599] [INFO] application - Application listening at :3000

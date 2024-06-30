@@ -45,7 +45,7 @@ function clearPngMshStl_init(dir)
 	const arrFiles = arrDirFiles.filter(dirent => dirent.isFile()).map(({ name }) => name);
 	
 	arrFiles.forEach(fname => {
-		if (path.basename(fname) == 'png2stl_Cntr.png' || path.basename(fname) == 'png2stl_Mesh.png' || path.parse(fname).ext == ".msh" || path.parse(fname).ext == ".stl") {
+		if (path.basename(fname) == 'blockSpinner.png' || path.basename(fname) == 'png2stl_Cntr.png' || path.basename(fname) == 'png2stl_Mesh.png' || path.parse(fname).ext == ".msh" || path.parse(fname).ext == ".stl") {
 			fs.unlink((dir + fname), (error) => {
 				if (error != null) {
 					console.log(error);
@@ -80,6 +80,9 @@ function clearPngMshStl_all(dir)
 // --------------------------------------
 router.get("/", (req, res) => {
 	clearPngMshStl_all("./app/gmsh/");
+	fs.copyFileSync("blockSpinner.png","./app/gmsh/blockSpinner.png")
+	fs.copyFileSync("png2stl_Cntr.png","./app/gmsh/png2stl_Cntr.png")
+	fs.copyFileSync("png2stl_Mesh.png","./app/gmsh/png2stl_Mesh.png")
 	res.render("./index.ejs");
 });
 // --------------------------------------
@@ -106,6 +109,8 @@ router.post("/", upload.any(), (req, res) => {
 	res.set({
 		'Content-Disposition': `attachment; filename=${encodeURIComponent(fname_stl)}`
 	});
+	
+	fs.copyFileSync("blockSpinner.png","./app/gmsh/blockSpinner.png")
 	
 	res.status(200).send(
 		fs.readFileSync(req.files[0].destination + fname_stl)
