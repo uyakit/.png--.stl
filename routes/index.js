@@ -35,7 +35,7 @@ function exec_png2stl(fname)
 	// .png -> .stl
 	//
 	// https://t-salad.com/node-exe/
-	// subproc.execSync('py  ./app/gmsh/png2stl.py  "./' + fname + '"');
+	// subproc.execSync('py ./app/gmsh/png2stl.py  "./' + fname + '"');
 	subproc.execSync('C:/home/python3111x64/python.exe  ./app/gmsh/png2stl.py  "./' + fname + '"');
 	// ------------------------------------------------------
 }
@@ -106,12 +106,12 @@ router.post("/", upload.any(), (req, res) => {
 	console.log('# RETURN : ' + fname_stl);
 	console.log();
 	
+	fs.copyFileSync("blockSpinner.png","./app/gmsh/blockSpinner.png")
+	
 	// https://qiita.com/watatakahashi/items/4b456971ae6dc3038569#%E6%96%B9%E6%B3%95%E3%81%9D%E3%81%AE2-header%E3%81%AB%E6%8C%87%E5%AE%9A
 	res.set({
 		'Content-Disposition': `attachment; filename=${encodeURIComponent(fname_stl)}`
 	});
-	
-	fs.copyFileSync("blockSpinner.png","./app/gmsh/blockSpinner.png")
 	
 	res.status(200).send(
 		fs.readFileSync(req.files[0].destination + fname_stl)

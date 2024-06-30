@@ -68,7 +68,7 @@
 						</div>
 						<br>
 						<div style="text-align:right;">
-							<a href="./public/Synchronised_Swimming_of_Two_Fish@2016.png" download="Synchronised_Swimming_of_Two_Fish@2016.png" target="_blank" style="color:rgba(21, 153, 191, 0.8)"># <u>Sample .png to test</u>&nbsp;[298 KB]</a>
+							<a href="./public/Synchronised_Swimming_of_Two_Fish@2016.png" download="Synchronised_Swimming_of_Two_Fish@2016.png" target="_blank" style="color:rgba(21, 153, 191, 0.8);"># <u>Sample .png to test</u>&nbsp;[298 KB]</a>
 						</div>
 						<div id="upFileWrap">
 							<div id="upFileWrap_noPrev">
@@ -114,7 +114,7 @@
 				</table>
 			</div>
 			<div id="watchRes" style="display:none; margin:auto; width:900px;">
-				<img id="blockSpinner" style="width:100px;" src="../app/gmsh/blockSpinner.png" onload="reloadImg_onload(this, 1000)" onerror="reloadImg_onerror(this, 1000)" />
+				<img id="blockSpinner" style="width:100px;" src="../app/gmsh/blockSpinner.png?@php echo uniqid(); @endphp" onload="reloadImg_onload(this, 1000)" onerror="reloadImg_onerror(this, 1000)" />
 			</div>
 			<br><br><br><br><br><br><br>
 			<%- include("./_share/footer.ejs") %>
@@ -284,17 +284,16 @@
 			});
 			
 			imgRes_Mesh.addEventListener('load', (e) => {
-				box.style.display = 'none';
 				sbmtRes.style.display = 'block';
 			});
 			
-			<!-- imb.addEventListener('load', (e) => { -->
-				<!-- box.style.display = 'none'; -->
-			<!-- }); -->
+			imb.addEventListener('load', (e) => {
+				box.style.display = 'none';
+			});
 			
-			<!-- imb.addEventListener('error', (e) => { -->
-				<!-- box.style.display = 'block'; -->
-			<!-- }); -->
+			imb.addEventListener('error', (e) => {
+				box.style.display = 'block';
+			});
 			// ======================================================
 			//Hamburger menu
 			const mobileMenu = document.getElementById("mobile-menu");

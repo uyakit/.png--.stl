@@ -1,5 +1,5 @@
 If(PostProcessing.NbViews == 0) 
- 	 Merge "C:\Users\uyasp\Desktop\Node.js\Express.js\png2stl.js\app\gmsh\png2stl.png"; 
+ 	 Merge "C:/Users/uyasp/Desktop/Node.js/Express.js/png2stl.js/app/gmsh/png2stl.png"; 
 	 Plugin(ModifyComponents).Expression0 = "1 + v0^3 * 10"; 
 	 Plugin(ModifyComponents).Run; 
 EndIf
@@ -94,9 +94,11 @@ Mesh.RecombineAll = (algo == 8);
 //Mesh.Algorithm = 6; // Frontal-Delaunay
 Mesh 2;
 
+Draw;
 Save "png2stl_Cntr.png";
 
 View[0].Visible = 0;
+Draw;
 Save "png2stl_Mesh.png";
 
 Save "png2stl.msh";

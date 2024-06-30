@@ -9,18 +9,19 @@ import subprocess
 import shutil
 from PIL import Image
 
-path_me = os.path.abspath(os.path.realpath(__file__))
-pathd_me = os.path.abspath(os.path.dirname(path_me))
+path_me = os.path.abspath(os.path.realpath(__file__)).replace(os.sep,'/')
+pathd_me = os.path.abspath(os.path.dirname(path_me)).replace(os.sep,'/')
 basename_me = os.path.splitext(os.path.basename(path_me))[0]
 os.chdir(pathd_me)
 
-path_png = os.path.abspath(sys.argv[1])
-pathd_png = os.path.abspath(os.path.dirname(path_png))
+path_png = os.path.abspath(sys.argv[1]).replace(os.sep,'/')
+pathd_png = os.path.abspath(os.path.dirname(path_png)).replace(os.sep,'/')
 basename_png = os.path.splitext(os.path.basename(path_png))[0]
 
 shutil.copy(basename_png + '.png', basename_me + '.png')
 path_png_tmp = os.path.join(pathd_png, basename_me + '.png')
 
+path_png_tmp = path_png_tmp.replace(os.sep,'/')
 path_png_f = f'"{path_png_tmp}"'
 
 # Write GEO file as input for Gmsh
@@ -122,9 +123,11 @@ Mesh.RecombineAll = (algo == 8);
 //Mesh.Algorithm = 6; // Frontal-Delaunay
 Mesh 2;
 
+Draw;
 Save "{basename_me}_Cntr.png";
 
 View[0].Visible = 0;
+Draw;
 Save "{basename_me}_Mesh.png";
 
 Save "{basename_me}.msh";
@@ -156,14 +159,14 @@ shutil.copy(basename_me + '.stl', basename_png + '.stl')
 os.remove(basename_me + '.stl')
 # -----------------------------------------------
 # https://imagingsolution.net/program/python/pillow/pillow_image_crop/
-im = Image.open(basename_me + '_Cntr.png')
-im.crop((0, 0, (im.width -1), im.height)).save(basename_me + '_Cntr.png')  # (left, upper, right, lower)
+# im = Image.open(basename_me + '_Cntr.png')
+# im.crop((0, 0, (im.width -1), im.height)).save(basename_me + '_Cntr.png')  # (left, upper, right, lower)
 
-shutil.copy(basename_me + '_Cntr.png', basename_png + '_Cntr.png')
+# shutil.copy(basename_me + '_Cntr.png', basename_png + '_Cntr.png')
 # -----------------------------------------------
-im = Image.open(basename_me + '_Mesh.png')
-im.crop((0, 0, (im.width -1), im.height)).save(basename_me + '_Mesh.png')  # (left, upper, right, lower)
+# im = Image.open(basename_me + '_Mesh.png')
+# im.crop((0, 0, (im.width -1), im.height)).save(basename_me + '_Mesh.png')  # (left, upper, right, lower)
 
-shutil.copy(basename_me + '_Mesh.png', basename_png + '_Mesh.png')
+# shutil.copy(basename_me + '_Mesh.png', basename_png + '_Mesh.png')
 # -----------------------------------------------
 
