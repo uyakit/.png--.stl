@@ -7,3 +7,7 @@
 [2024-06-30T14:48:42.546] [INFO] application - Application listening at :3000
 [2024-06-30T14:54:36.580] [INFO] application - Application listening at :3000
 [2024-06-30T15:06:33.599] [INFO] application - Application listening at :3000
+[2024-06-30T15:31:37.227] [INFO] application - Application listening at :3000
+[2024-06-30T15:50:22.724] [INFO] application - Application listening at :3000
+[2024-06-30T16:49:06.769] [INFO] application - Application listening at :3000
+[2024-06-30T16:51:56.666] [ERROR] application - EPERM: operation not permitted, copyfile 'C:\Users\uyasp\Desktop\Node.js\Express.js\png2stl.js\png2stl_Cntr.png' -> 'C:\Users\uyasp\Desktop\Node.js\Express.js\png2stl.js\app\gmsh\png2stl_Cntr.png'

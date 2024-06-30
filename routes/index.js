@@ -35,7 +35,8 @@ function exec_png2stl(fname)
 	// .png -> .stl
 	//
 	// https://t-salad.com/node-exe/
-	subproc.execSync('py  ./app/gmsh/png2stl.py  "./' + fname + '"');
+	// subproc.execSync('py  ./app/gmsh/png2stl.py  "./' + fname + '"');
+	subproc.execSync('C:/home/python3111x64/python.exe  ./app/gmsh/png2stl.py  "./' + fname + '"');
 	// ------------------------------------------------------
 }
 //==================================================================
