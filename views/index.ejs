@@ -108,13 +108,13 @@
 							<img id="imgRes_Cntr" style="margin-left: auto; width:400px;" src="../app/gmsh/png2stl_Cntr.png" onload="reloadImg_Cntr(this, 1000)" onerror="reloadImg_Cntr(this, 5000)" />
 						</td>
 						<td>
-							<img id="imgRes_Mesh" style="margin-left: 0; width:400px;" src="../app/gmsh/png2stl_Mesh.png" onload="reloadImg_Mesh(this, 1000)" onerror="reloadImg_Mesh(this, 5000)" />
+							<img id="imgRes_Mesh" style="margin-left: 0; width:600px;" src="../app/gmsh/png2stl_Mesh.png" onload="reloadImg_Mesh(this, 1000)" onerror="reloadImg_Mesh(this, 5000)" />
 						</td>
 					</tr>
 				</table>
 			</div>
 			<div id="watchRes" style="display:none; margin:auto; width:900px;">
-				<img id="blockSpinner" style="width:100px;" src="../app/gmsh/blockSpinner.png?@php echo uniqid(); @endphp" onload="reloadImg_onload(this, 1000)" onerror="reloadImg_onerror(this, 1000)" />
+				<img id="blockSpinner" style="width:100px;" src="../app/gmsh/blockSpinner.png?@php echo uniqid(); @endphp" onload="hideSpinner(this, 1000);" onerror="reloadImg(this, 1000)" />
 			</div>
 			<br><br><br><br><br><br><br>
 			<%- include("./_share/footer.ejs") %>
@@ -154,32 +154,33 @@
 				);
 			}
 			// ------------------------------------------------------
-			function reloadImg(elem, span) {
+			function hideSpinner(elem, span){
+				box.style.display = 'none';
+				
 				setTimeout( () => {
 					elem.src = "../app/gmsh/blockSpinner.png" + "?" + dateNow();
 				}, span);
 			}
 			
-			function reloadImg_onload(elem, span){
-				reloadImg(elem, span);
-				box.style.display = 'none';
-			}
-			
-			function reloadImg_onerror(elem, span){
-				reloadImg(elem, span);
+			function reloadImg(elem, span){
 				box.style.display = 'block';
+				
+				setTimeout( () => {
+					elem.src = "../app/gmsh/blockSpinner.png" + "?" + dateNow();
+				}, span);
+				
 			}
 			// ------------------------------------------------------
-			function reloadImg_Cntr(elem, span){ 
+			function reloadImg_Cntr(elem, span){
 				setTimeout( () => {
 					elem.src = "../app/gmsh/png2stl_Cntr.png" + "?" + dateNow();
-				}, span); 
+				}, span);
 			}
 			
-			function reloadImg_Mesh(elem, span){ 
+			function reloadImg_Mesh(elem, span){
 				setTimeout( () => {
 					elem.src = "../app/gmsh/png2stl_Mesh.png" + "?" + dateNow();
-				}, span); 
+				}, span);
 			}
 			// ------------------------------------------------------
 			const imgPrev = document.getElementById('imgPrev');
@@ -285,14 +286,6 @@
 			
 			imgRes_Mesh.addEventListener('load', (e) => {
 				sbmtRes.style.display = 'block';
-			});
-			
-			imb.addEventListener('load', (e) => {
-				box.style.display = 'none';
-			});
-			
-			imb.addEventListener('error', (e) => {
-				box.style.display = 'block';
 			});
 			// ======================================================
 			//Hamburger menu

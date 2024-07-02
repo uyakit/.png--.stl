@@ -146,27 +146,29 @@ def png2stl():
   # subprocess.run(['C:\Program Files\gmsh\gmsh.exe', basename_me + '.geo'])
   subprocess.run(['gmsh.exe', basename_me + '.geo'])
 
-# Run
-prepare_geo()
-png2stl()
+def main():
+    prepare_geo()
+    png2stl()
+    
+    # Post processing
+    
+    shutil.copy(basename_me + '.msh', basename_png + '.msh')
+    os.remove(basename_me + '.msh')
+    
+    shutil.copy(basename_me + '.stl', basename_png + '.stl')
+    os.remove(basename_me + '.stl')
+    # -----------------------------------------------
+    # https://imagingsolution.net/program/python/pillow/pillow_image_crop/
+    # im = Image.open(basename_me + '_Cntr.png')
+    # im.crop((0, 0, (im.width -1), im.height)).save(basename_me + '_Cntr.png')  # (left, upper, right, lower)
+    
+    # shutil.copy(basename_me + '_Cntr.png', basename_png + '_Cntr.png')
+    # -----------------------------------------------
+    # im = Image.open(basename_me + '_Mesh.png')
+    # im.crop((0, 0, (im.width -1), im.height)).save(basename_me + '_Mesh.png')  # (left, upper, right, lower)
+    
+    # shutil.copy(basename_me + '_Mesh.png', basename_png + '_Mesh.png')
+    # -----------------------------------------------
 
-# Post processing
-
-shutil.copy(basename_me + '.msh', basename_png + '.msh')
-os.remove(basename_me + '.msh')
-
-shutil.copy(basename_me + '.stl', basename_png + '.stl')
-os.remove(basename_me + '.stl')
-# -----------------------------------------------
-# https://imagingsolution.net/program/python/pillow/pillow_image_crop/
-# im = Image.open(basename_me + '_Cntr.png')
-# im.crop((0, 0, (im.width -1), im.height)).save(basename_me + '_Cntr.png')  # (left, upper, right, lower)
-
-# shutil.copy(basename_me + '_Cntr.png', basename_png + '_Cntr.png')
-# -----------------------------------------------
-# im = Image.open(basename_me + '_Mesh.png')
-# im.crop((0, 0, (im.width -1), im.height)).save(basename_me + '_Mesh.png')  # (left, upper, right, lower)
-
-# shutil.copy(basename_me + '_Mesh.png', basename_png + '_Mesh.png')
-# -----------------------------------------------
-
+if __name__ == '__main__':
+    main()
