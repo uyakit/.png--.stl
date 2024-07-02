@@ -24,6 +24,7 @@ path_png_tmp = os.path.join(pathd_png, basename_me + '.png')
 path_png_tmp = path_png_tmp.replace(os.sep,'/')
 path_png_f = f'"{path_png_tmp}"'
 
+
 # Write GEO file as input for Gmsh
 header = f'If(PostProcessing.NbViews == 0) \n \
 \t Merge {path_png_f}; \n\
@@ -135,39 +136,46 @@ Save "{basename_me}.stl";
 Exit;
 """
 
-def prepare_geo():
-  f = open(basename_me + '.geo', 'w')
-  f.write(header + body)
-  f.close()
-
-# https://www.rccm.co.jp/icem/pukiwiki/index.php?%E3%83%A1%E3%83%83%E3%82%B7%E3%83%A5%E3%81%AE%E5%87%BA%E5%8A%9B%E5%BD%A2%E5%BC%8F%28Gmsh%29
-# https://qiita.com/natsuriver/items/98434b86a1d65f1f76a3
-def png2stl():
-  # subprocess.run(['C:\Program Files\gmsh\gmsh.exe', basename_me + '.geo'])
-  subprocess.run(['gmsh.exe', basename_me + '.geo'])
 
 def main():
-    prepare_geo()
-    png2stl()
+    # -----------------------------------------------
+    f = open(basename_me + '.geo', 'w')
+    f.write(header + body)
+    f.close()
+    # -----------------------------------------------
+    # https://www.rccm.co.jp/icem/pukiwiki/index.php?%E3%83%A1%E3%83%83%E3%82%B7%E3%83%A5%E3%81%AE%E5%87%BA%E5%8A%9B%E5%BD%A2%E5%BC%8F%28Gmsh%29
+    # https://qiita.com/natsuriver/items/98434b86a1d65f1f76a3
+    # subprocess.run(['C:\Program Files\gmsh\gmsh.exe', basename_me + '.geo'])
+    subprocess.run(['gmsh.exe', basename_me + '.geo'])
     
     # Post processing
-    
     shutil.copy(basename_me + '.msh', basename_png + '.msh')
     os.remove(basename_me + '.msh')
     
     shutil.copy(basename_me + '.stl', basename_png + '.stl')
     os.remove(basename_me + '.stl')
     # -----------------------------------------------
-    # https://imagingsolution.net/program/python/pillow/pillow_image_crop/
-    # im = Image.open(basename_me + '_Cntr.png')
-    # im.crop((0, 0, (im.width -1), im.height)).save(basename_me + '_Cntr.png')  # (left, upper, right, lower)
+    path_png_cntr = pathd_me + '/' + basename_me + '_Cntr.png'
     
-    # shutil.copy(basename_me + '_Cntr.png', basename_png + '_Cntr.png')
+    if os.path.getsize(path_png_cntr) == 0:
+        os.remove(path_png_cntr)
+    else:
+        # https://imagingsolution.net/program/python/pillow/pillow_image_crop/
+        im = Image.open(path_png_cntr)
+        im.crop((0, 0, (im.width -1), im.height)).save(path_png_cntr)  # (left, upper, right, lower)
+        
+        shutil.copy(path_png_cntr, pathd_me + '/' + basename_png + '_Cntr.png')
     # -----------------------------------------------
-    # im = Image.open(basename_me + '_Mesh.png')
-    # im.crop((0, 0, (im.width -1), im.height)).save(basename_me + '_Mesh.png')  # (left, upper, right, lower)
+    path_png_mesh = pathd_me + '/' + basename_me + '_Mesh.png'
     
-    # shutil.copy(basename_me + '_Mesh.png', basename_png + '_Mesh.png')
+    if os.path.getsize(path_png_mesh) == 0:
+        os.remove(path_png_mesh)
+    else:
+        # https://imagingsolution.net/program/python/pillow/pillow_image_crop/
+        im = Image.open(path_png_mesh)
+        im.crop((0, 0, (im.width -1), im.height)).save(path_png_mesh)  # (left, upper, right, lower)
+        
+        shutil.copy(path_png_mesh, pathd_me + '/' + basename_png + '_Mesh.png')
     # -----------------------------------------------
 
 if __name__ == '__main__':

@@ -39,3 +39,24 @@ FileNotFoundError: [Errno 2] No such file or directory: 'C:/Users/uyasp/Desktop/
 [2024-07-02T14:00:13.569] [INFO] application - Application listening at :3000
 [2024-07-02T14:06:46.610] [INFO] application - Application listening at :3000
 [2024-07-02T14:14:21.900] [INFO] application - Application listening at :3000
+[2024-07-02T14:44:10.961] [INFO] application - Application listening at :3000
+[2024-07-02T14:44:43.115] [ERROR] application - Command failed: C:/home/python3111x64/python.exe  ./app/gmsh/png2stl.py  ./Lenna-WB.png
+  File "C:\Users\uyasp\Desktop\Node.js\Express.js\png2stl.js\app\gmsh\png2stl.py", line 163
+    os.remove(path_png_cntr')
+                           ^
+SyntaxError: unterminated string literal (detected at line 163)
+
+[2024-07-02T14:47:00.852] [INFO] application - Application listening at :3000
+[2024-07-02T14:49:16.368] [ERROR] application - Command failed: C:/home/python3111x64/python.exe  ./app/gmsh/png2stl.py  ./Lenna-WB.png
+  File "C:\Users\uyasp\Desktop\Node.js\Express.js\png2stl.js\app\gmsh\png2stl.py", line 163
+    os.remove(path_png_cntr')
+                           ^
+SyntaxError: unterminated string literal (detected at line 163)
+
+[2024-07-02T14:52:46.559] [ERROR] application - Command failed: C:/home/python3111x64/python.exe  ./app/gmsh/png2stl.py  ./Lenna-WB.png
+  File "C:\Users\uyasp\Desktop\Node.js\Express.js\png2stl.js\app\gmsh\png2stl.py", line 169
+    os.remove(path_png_cntr')
+                           ^
+SyntaxError: unterminated string literal (detected at line 169)
+
+[2024-07-02T15:01:43.658] [INFO] application - Application listening at :3000
