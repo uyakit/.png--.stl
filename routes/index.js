@@ -29,6 +29,16 @@ const upload = multer({
 });
 
 //==================================================================
+function copyf(path_from, path_to)
+{
+	fs.copyFileSync(path_from, path_to)
+	
+	const dnow = new Date();
+	fs.utimes(path_to, dnow, dnow, e => {
+		if (e) console.log( e.message );
+	});
+}
+//==================================================================
 function exec_png2stl(fname)
 {
 	// ------------------------------------------------------
@@ -37,7 +47,7 @@ function exec_png2stl(fname)
 	// https://t-salad.com/node-exe/
 	subproc.execSync('C:/home/python3111x64/python.exe  ./app/gmsh/png2stl.py  ./' + fname);
 	subproc.execSync('C:/home/python3111x64/python.exe  ./app/gmsh/stl2png.py  ./' + path.parse(fname).name + '.stl');
-	fs.copyFileSync('./app/gmsh/' + path.parse(fname).name + '.stl.png', './app/gmsh/png2stl_Mesh.png');
+	copyf('./app/gmsh/' + path.parse(fname).name + '.stl.png', './app/gmsh/png2stl_Mesh.png');
 	// ------------------------------------------------------
 }
 //==================================================================
@@ -82,9 +92,9 @@ function clearPngMshStl_all(dir)
 // --------------------------------------
 router.get("/", (req, res) => {
 	clearPngMshStl_all("./app/gmsh/");
-	fs.copyFileSync("blockSpinner.png","./app/gmsh/blockSpinner.png");
-	fs.copyFileSync("png2stl_Cntr.png","./app/gmsh/png2stl_Cntr.png");
-	fs.copyFileSync("png2stl_Mesh.png","./app/gmsh/png2stl_Mesh.png");
+	copyf("blockSpinner.png","./app/gmsh/blockSpinner.png");
+	copyf("png2stl_Cntr.png","./app/gmsh/png2stl_Cntr.png");
+	copyf("png2stl_Mesh.png","./app/gmsh/png2stl_Mesh.png");
 	res.render("./index.ejs");
 });
 // --------------------------------------
@@ -107,14 +117,14 @@ router.post("/", upload.any(), (req, res) => {
 	console.log('# RETURN : ' + fname_stl);
 	console.log();
 	
-	fs.copyFileSync("blockSpinner.png","./app/gmsh/blockSpinner.png");
+	copyf("blockSpinner.png","./app/gmsh/blockSpinner.png");
 	
 	if (fs.existsSync("./app/gmsh/png2stl_Cntr.png") == false) {
-		fs.copyFileSync("png2stl_Cntr.png","./app/gmsh/png2stl_Cntr.png");
+		copyf("png2stl_Cntr.png","./app/gmsh/png2stl_Cntr.png");
 	}
 	
 	if (fs.existsSync("./app/gmsh/png2stl_Mesh.png") == false) {
-		fs.copyFileSync("png2stl_Mesh.png","./app/gmsh/png2stl_Mesh.png");
+		copyf("png2stl_Mesh.png","./app/gmsh/png2stl_Mesh.png");
 	}
 	
 	// https://qiita.com/watatakahashi/items/4b456971ae6dc3038569#%E6%96%B9%E6%B3%95%E3%81%9D%E3%81%AE2-header%E3%81%AB%E6%8C%87%E5%AE%9A
